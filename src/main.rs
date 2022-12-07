@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 // for each word in misspelledWords.txt, search whole directory. As soon as word is found, break the loop and print the word, then move to the next word until done
 // for word in list
 //     for file in directory
