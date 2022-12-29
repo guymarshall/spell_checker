@@ -33,7 +33,7 @@ mod user_input;
 
 use std::fs::{self, File, DirEntry};
 use std::path::{Path, PathBuf};
-use std::io::{self, prelude::*, BufReader};
+use std::io::{prelude::*, BufReader};
 
 fn read_files(directory: &Path) {
     if directory.is_dir() {
@@ -51,7 +51,6 @@ fn read_files(directory: &Path) {
 }
 
 fn main() {
-    
     let file: File = File::open("misspelled_words.txt").expect("Invalid path.");
     let reader: BufReader<File> = BufReader::new(file);
     
