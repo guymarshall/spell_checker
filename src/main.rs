@@ -23,16 +23,23 @@ fn main() {
     let directory: &Path = Path::new(&path);
     let path_contents: HashMap<String, String> = save_file_contents(directory, true);
 
-    // let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", value));
+    // let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", &value)); // angers borrow-checker
 
-    // let mut found_words: Vec<String> = Vec::new();
-    // misspelled_words.into_iter().for_each(|misspelled_word| {
-    //     &path_contents.into_iter().for_each(|(key, value)| {
+    let mut found_words: Vec<String> = Vec::new();
+    // &misspelled_words.into_iter().for_each(|misspelled_word| {
+    //     &path_contents.into_iter().for_each(|(_, value)| {
     //         if value.contains(&misspelled_word) {
     //             found_words.push(misspelled_word);
     //         }
     //     });
     // });
+    for misspelled_word in &misspelled_words {
+        for (_, value) in &path_contents {
+            if value.contains(misspelled_word) {
+                found_words.push(misspelled_word.to_string());
+            }
+        }
+    }
 
-    // found_words.into_iter().for_each(|word| println!("{}", word));
+    found_words.into_iter().for_each(|word| println!("{}", word));
 }
