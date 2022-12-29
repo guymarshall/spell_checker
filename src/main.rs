@@ -8,7 +8,7 @@ use std::path::{Path, PathBuf};
 use std::io::{prelude::*, BufReader};
 
 fn save_file_contents(directory: &Path) -> HashMap<String, String> {
-    let mut contents_vector: HashMap<String, String> = HashMap::new();
+    let mut path_contents: HashMap<String, String> = HashMap::new();
     if directory.is_dir() {
         for entry in fs::read_dir(directory).unwrap() {
             let entry: DirEntry = entry.unwrap();
@@ -17,11 +17,11 @@ fn save_file_contents(directory: &Path) -> HashMap<String, String> {
                 save_file_contents(&path);
             } else {
                 let contents: String = fs::read_to_string(&path).unwrap_or("".to_string());
-                contents_vector.insert(path.to_string_lossy().to_string(), contents);
+                path_contents.insert(path.to_string_lossy().to_string(), contents);
             }
         }
     }
-    contents_vector
+    path_contents
 }
 
 fn main() {
@@ -35,7 +35,7 @@ fn main() {
     let path: String = user_input::get_user_input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
-    let contents_vector: HashMap<String, String> = save_file_contents(directory);
+    let path_contents: HashMap<String, String> = save_file_contents(directory);
 
-    println!("{:#?}", contents_vector);
+    println!("{:#?}", path_contents);
 }
