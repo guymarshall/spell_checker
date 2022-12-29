@@ -25,5 +25,14 @@ fn main() {
 
     let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", value));
 
-    // TODO loop through and search hashmap for misspelled words
+    // let mut found_words: Vec<String> = Vec::new();
+    // misspelled_words.into_iter().for_each(|misspelled_word| {
+    //     &path_contents.into_iter().for_each(|(key, value)| {
+    //         if value.contains(&misspelled_word) {
+    //             found_words.push(misspelled_word);
+    //         }
+    //     });
+    // });
+
+    // found_words.into_iter().for_each(|word| println!("{}", word));
 }
