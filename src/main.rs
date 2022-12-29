@@ -21,9 +21,9 @@ fn main() {
     let path: String = user_input::get_user_input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
-    let path_contents: HashMap<String, String> = save_file_contents(directory);
+    let path_contents: HashMap<String, String> = save_file_contents(directory, true);
 
-    let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", value));
+    // let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", value));
 
     // let mut found_words: Vec<String> = Vec::new();
     // misspelled_words.into_iter().for_each(|misspelled_word| {
