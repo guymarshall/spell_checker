@@ -15,7 +15,8 @@ fn save_file_contents(directory: &Path) -> Vec<String> {
             if path.is_dir() {
                 save_file_contents(&path);
             } else {
-                let contents: String = fs::read_to_string(path).unwrap_or("".to_string());
+                let contents: String = fs::read_to_string(&path).unwrap_or("".to_string());
+                println!("File: {}", path.to_string_lossy());
                 contents_vector.push(contents);
             }
         }
