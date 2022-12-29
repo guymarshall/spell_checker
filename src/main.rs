@@ -31,9 +31,6 @@ fn main() {
     for line in reader.lines() {
         misspelled_words.push(line.unwrap());
     }
-    for misspelled_word in misspelled_words {
-        println!("{}", misspelled_word);
-    }
     let path: String = user_input::get_user_input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
