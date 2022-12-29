@@ -6,14 +6,14 @@ use std::fs::{self, File, DirEntry};
 use std::path::{Path, PathBuf};
 use std::io::{prelude::*, BufReader};
 
-fn read_files(directory: &Path) -> Vec<String> {
+fn save_file_contents(directory: &Path) -> Vec<String> {
     let mut contents_vector: Vec<String> = Vec::new();
     if directory.is_dir() {
         for entry in fs::read_dir(directory).unwrap() {
             let entry: DirEntry = entry.unwrap();
             let path: PathBuf = entry.path();
             if path.is_dir() {
-                read_files(&path);
+                save_file_contents(&path);
             } else {
                 let contents: String = fs::read_to_string(path).unwrap_or("".to_string());
                 contents_vector.push(contents);
@@ -37,7 +37,7 @@ fn main() {
     let path: String = user_input::get_user_input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
-    let contents_vector: Vec<String> = read_files(directory);
+    let contents_vector: Vec<String> = save_file_contents(directory);
 
     println!("{:#?}", contents_vector);
 }
