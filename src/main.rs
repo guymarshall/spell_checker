@@ -24,4 +24,6 @@ fn main() {
     let path_contents: HashMap<String, String> = save_file_contents(directory);
 
     let _ = &path_contents.into_iter().for_each(|(_, value)| println!("{}", value));
+
+    // TODO loop through and search hashmap for misspelled words
 }
