@@ -16,7 +16,6 @@ fn read_files(directory: &Path) -> Vec<String> {
                 read_files(&path);
             } else {
                 let contents: String = fs::read_to_string(path).unwrap_or("".to_string());
-                println!("{}", &contents);
                 contents_vector.push(contents);
             }
         }
