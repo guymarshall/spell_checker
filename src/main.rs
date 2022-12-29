@@ -26,4 +26,29 @@ fn main() -> io::Result<()> {
     println!("Directory: {}", directory); // so the compiler doesn't complain
 
     Ok(())
+
+    /*
+    use std::fs;
+    use std::path::Path;
+
+    fn read_files(dir: &Path) {
+        if dir.is_dir() {
+            for entry in fs::read_dir(dir).unwrap() {
+                let entry = entry.unwrap();
+                let path = entry.path();
+                if path.is_dir() {
+                    read_files(&path);
+                } else {
+                    let contents = fs::read_to_string(path).unwrap();
+                    println!("{}", contents);
+                }
+            }
+        }
+    }
+
+    fn main() {
+        let dir = Path::new("/path/to/directory");
+        read_files(dir);
+    }
+    */
 }
