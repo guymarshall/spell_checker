@@ -37,5 +37,7 @@ fn main() {
     let directory: &Path = Path::new(&path);
     let path_contents: HashMap<String, String> = save_file_contents(directory);
 
-    println!("{:#?}", path_contents);
+    for (_, value) in &path_contents {
+        println!("{}", value);
+    }
 }
