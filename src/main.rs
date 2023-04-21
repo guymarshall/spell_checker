@@ -19,7 +19,7 @@ fn main() {
     for line in reader.lines() {
         misspelled_words.push(line.unwrap());
     }
-    let path: String = user_input::get_user_input("Enter path to search:");
+    let path: String = user_input::input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
     let path_contents: HashMap<String, String> = save_file_contents(directory, true);
