@@ -1,3 +1,5 @@
+#![forbid(unsafe_code)]
+
 use std::io;
 
 pub fn get_user_input(prompt: &str) -> String {
