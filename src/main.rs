@@ -25,14 +25,15 @@ fn main() {
     let directory: &Path = Path::new(&path);
     let path_contents: HashMap<String, String> = save_file_contents(directory, true);
 
-    let mut found_words: Vec<String> = Vec::new();
-    for misspelled_word in &misspelled_words {
-        for value in path_contents.values() {
-            if value.contains(misspelled_word) && !found_words.contains(misspelled_word) {
-                found_words.push(misspelled_word.to_string());
-            }
-        }
-    }
+    let found_words: Vec<String> = misspelled_words
+        .iter()
+        .filter(|misspelled_word: &&String| {
+            path_contents
+                .values()
+                .any(|value: &String| value.contains(*misspelled_word))
+        })
+        .map(|misspelled_word: &String| misspelled_word.to_string())
+        .collect();
 
     found_words
         .into_iter()
