@@ -1,7 +1,7 @@
 #![forbid(unsafe_code)]
 
-use std::io;
 use std::error::Error;
+use std::io;
 
 pub fn get_user_input(prompt: &str) -> Result<String, Box<dyn Error>> {
     println!("{}", prompt);
@@ -18,10 +18,10 @@ pub fn input(prompt: &str) -> String {
         match get_user_input(prompt) {
             Ok(input) => {
                 return input;
-            },
+            }
             Err(error) => {
                 println!("Error: {}", error);
-            },
+            }
         };
     }
 }

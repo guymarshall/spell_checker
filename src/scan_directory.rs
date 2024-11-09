@@ -14,7 +14,7 @@ pub fn save_file_contents(directory: &Path, log_output: bool) -> HashMap<String,
                 save_file_contents(&path, log_output);
             } else {
                 let contents: String = fs::read_to_string(&path).unwrap_or("".to_string());
-                
+
                 if log_output {
                     println!("{}", path.to_string_lossy());
                 }
