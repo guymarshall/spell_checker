@@ -26,7 +26,7 @@ fn main() {
 
     let mut found_words: Vec<String> = Vec::new();
     for misspelled_word in &misspelled_words {
-        for (_, value) in &path_contents {
+        for value in path_contents.values() {
             if value.contains(misspelled_word) && !found_words.contains(misspelled_word) {
                 found_words.push(misspelled_word.to_string());
             }
@@ -35,5 +35,5 @@ fn main() {
 
     found_words
         .into_iter()
-        .for_each(|word| println!("{}", word));
+        .for_each(|word: String| println!("{}", word));
 }
