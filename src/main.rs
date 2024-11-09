@@ -5,7 +5,7 @@ mod scan_directory;
 use promptput::input;
 use std::collections::HashMap;
 use std::fs::File;
-use std::io::{prelude::*, BufReader};
+use std::io::{prelude::*, BufReader, Error};
 use std::path::Path;
 
 use scan_directory::save_file_contents;
@@ -15,10 +15,11 @@ fn main() {
     let file: File = File::open("misspelled_words.txt").expect("Invalid path.");
     let reader: BufReader<File> = BufReader::new(file);
 
-    let mut misspelled_words: Vec<String> = Vec::new();
-    for line in reader.lines() {
-        misspelled_words.push(line.unwrap());
-    }
+    let misspelled_words: Vec<String> = reader
+        .lines()
+        .map(|line: Result<String, Error>| line.unwrap())
+        .collect();
+
     let path: String = input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
