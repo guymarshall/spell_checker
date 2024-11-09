@@ -3,5 +3,14 @@
 version = 3
 
 [[package]]
+name = "promptput"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5295e4732e2663b729693b9f0f3f76f820091998851fbcb88d760ec58d7d45ee"
+
+[[package]]
 name = "spell_checker"
 version = "0.1.0"
+dependencies = [
+ "promptput",
+]

@@ -1,8 +1,8 @@
 #![forbid(unsafe_code)]
 
 mod scan_directory;
-mod user_input;
 
+use promptput::input;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{prelude::*, BufReader};
@@ -19,7 +19,7 @@ fn main() {
     for line in reader.lines() {
         misspelled_words.push(line.unwrap());
     }
-    let path: String = user_input::input("Enter path to search:");
+    let path: String = input("Enter path to search:");
 
     let directory: &Path = Path::new(&path);
     let path_contents: HashMap<String, String> = save_file_contents(directory, true);
