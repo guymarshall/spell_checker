@@ -1,4 +1,4 @@
-# spell_checker
+# Spell Checker
 Use this to scan a directory and all files inside for commonly misspelled words.
 
-To run, install Rust and Cargo, and run "Cargo run --release". Then enter the path to the directory you want to scan. It will then print any words it finds.
+To run, install Python, and run "python app.py". Then enter the path to the directory you want to scan. It will print any files with misspelled words and the misspelled words.
