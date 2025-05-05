@@ -1,4 +1,5 @@
 from pathlib import Path
+import argparse
 
 MISSPELLED_WORDS_FILENAME: str = 'misspelled_words.txt'
 
@@ -21,18 +22,25 @@ def save_file_contents(directory: Path) -> dict[str, str]:
     return path_contents
 
 def main():
-    print('Example path: "c:/users/YOUR_USERNAME/downloads"')
+    argument_parser = argparse.ArgumentParser()
+    argument_parser.add_argument('--path', dest='path', type=str, help='Add path')
+    arguments = argument_parser.parse_args()
+    path: str = arguments.path
 
     try:
-        with open(MISSPELLED_WORDS_FILENAME, 'r', encoding='utf-8') as f:
-            misspelled_words = [line.strip() for line in f.readlines()]
+        directory: Path = Path(path)
+        print(f'Scanning directory "{directory}"')
+    except TypeError:
+        print('Path must be given via --path flag')
+        exit(1)
+    path_contents: dict[str, str] = save_file_contents(directory)
+
+    try:
+        with open(MISSPELLED_WORDS_FILENAME, 'r', encoding='utf-8') as file:
+            misspelled_words = [line.strip() for line in file.readlines()]
     except FileNotFoundError:
         print('Invalid path.')
         return
-
-    path: str = input('Enter path to search: ').strip()
-    directory: Path = Path(path)
-    path_contents: dict[str, str] = save_file_contents(directory)
 
     matched_words_by_file = {
         path: [word for word in misspelled_words if word in contents]
