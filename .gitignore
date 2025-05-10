@@ -2,4 +2,3 @@
 .vscode/
 *.iml
 __pycache__
-venv
