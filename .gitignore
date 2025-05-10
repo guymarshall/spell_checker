@@ -2,3 +2,4 @@
 .vscode/
 *.iml
 __pycache__
+output.txt
