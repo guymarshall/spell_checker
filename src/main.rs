@@ -1,5 +1,3 @@
-#![forbid(unsafe_code)]
-
 mod scan_directory;
 
 use promptput::input;
